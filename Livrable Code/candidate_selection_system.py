@@ -24,10 +24,12 @@ class CandidateSelectionSystem:
             if not api_key:
                 raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
             
+            # Initialize ChatGroq with correct parameters
+            # Remove any potential proxies parameter that might be passed
             self.llm = ChatGroq(
                 model=GROQ_MODEL,
                 temperature=TEMPERATURE,
-                groq_api_key=api_key
+                api_key=api_key
             )
             print(f"✅ Groq LLM initialized with model: {GROQ_MODEL}")
         except Exception as e:

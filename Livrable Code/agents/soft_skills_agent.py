@@ -8,7 +8,7 @@ def create_soft_skills_agent(llm=None):
     """Create the Soft Skills Agent."""
     if llm is None:
         from utils.config import GROQ_API_KEY
-        llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE, groq_api_key=GROQ_API_KEY)
+        llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE, api_key=GROQ_API_KEY)
     
     return Agent(
         role="Agent Soft Skills - Expert en Qualités Interpersonnelles",

@@ -11,7 +11,7 @@ def create_decider_agent(llm=None):
         api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")
         if not api_key:
             raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
-        llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE, groq_api_key=api_key)
+        llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE, api_key=api_key)
     
     return Agent(
         role="Agent Décideur - Directeur du Recrutement",
