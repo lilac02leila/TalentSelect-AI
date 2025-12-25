@@ -1,0 +1,80 @@
+CURRICULUM VITAE
+
+SOPHIE LEFEBVRE
+Business Intelligence Analyst / Data Engineer
+Email: sophie.lefebvre@email.com
+Téléphone: +33 6 55 44 33 22
+LinkedIn: linkedin.com/in/sophielefebvre
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Senior BI Analyst | RetailCorp | 2020 - Présent
+- Conception et développement de solutions BI avec Power BI et Tableau
+- Modélisation de données avec SQL Server et Azure Data Warehouse
+- Automatisation de rapports avec Python et ETL processes
+- Formation des utilisateurs business sur les outils BI
+- Gestion de projets d'analyse de données de bout en bout
+- Optimisation des requêtes SQL pour améliorer les performances (réduction de 40% du temps d'exécution)
+
+Business Intelligence Analyst | FinanceGroup | 2017 - 2020
+- Développement de dashboards pour le suivi des KPIs financiers
+- Extraction et transformation de données (ETL) avec SSIS
+- Création de modèles de données multidimensionnels (OLAP)
+- Collaboration avec les équipes finance et comptabilité
+- Analyse de tendances et prévisions budgétaires
+
+Analyste de Données | MarketingAgency | 2015 - 2017
+- Analyse de campagnes marketing avec Excel avancé et SQL
+- Création de rapports automatisés
+- Segmentation de clientèle
+- Support aux équipes marketing
+
+FORMATION
+
+Master en Management et Systèmes d'Information | HEC Paris | 2013 - 2015
+- Spécialisation en Business Intelligence et Analytics
+- Projets en data warehousing et data mining
+
+École de Commerce | ESCP Europe | 2010 - 2013
+- Fondamentaux en gestion, finance et marketing
+- Échange académique en Allemagne (6 mois)
+
+COMPÉTENCES TECHNIQUES
+
+BI Tools : Power BI (expert), Tableau (expert), QlikView, Excel avancé
+Bases de données : SQL Server, PostgreSQL, MySQL, Azure SQL
+ETL : SSIS, Azure Data Factory, Python (pandas)
+Langages : SQL (expert), Python (intermédiaire), DAX, MDX
+Cloud : Microsoft Azure (Data Factory, Data Warehouse, Power BI Service)
+Visualisation : Power BI, Tableau, Excel, Python (matplotlib, seaborn)
+Outils : Git, Jira, Confluence
+
+SOFT SKILLS
+
+- Leadership et gestion de projets
+- Communication excellente avec les parties prenantes business
+- Capacité à traduire les besoins métier en solutions techniques
+- Organisation et gestion du temps
+- Mentoring et formation d'équipes
+- Résolution de problèmes complexes
+- Orientation résultats
+
+RÉALISATIONS
+
+- Mise en place d'une plateforme BI centralisée pour 200+ utilisateurs
+- Réduction de 60% du temps de génération de rapports grâce à l'automatisation
+- Formation de 50+ utilisateurs sur Power BI
+- Optimisation des coûts cloud Azure de 25%
+
+LANGUES
+
+Français : Natif
+Anglais : Courant (TOEIC 980)
+Allemand : Intermédiaire
+
+CERTIFICATIONS
+
+- Microsoft Certified: Power BI Data Analyst Associate (2023)
+- Tableau Desktop Specialist (2022)
+- Microsoft Azure Fundamentals (2021)
+

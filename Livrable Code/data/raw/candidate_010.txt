@@ -1,0 +1,100 @@
+CURRICULUM VITAE
+
+EMMA DUBOIS
+Data Scientist / Analytics Consultant
+Email: emma.dubois@email.com
+Téléphone: +33 6 44 33 22 11
+LinkedIn: linkedin.com/in/emmadubois
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Data Scientist | Consulting International | 2020 - Présent
+- Missions de conseil en data science pour clients internationaux (Europe, Asie)
+- Développement de solutions ML pour différents secteurs (retail, finance, santé)
+- Analyse de données complexes et modélisation prédictive
+- Présentation de résultats à des dirigeants C-level
+- Gestion de projets data de A à Z
+- Formation de clients sur les outils et méthodes data science
+- Expérience multiculturelle et travail en équipes internationales
+
+Data Analyst | GlobalCorp | 2018 - 2020
+- Analyse de données clients pour 15 pays
+- Création de dashboards Power BI multilingues
+- Modélisation de comportements clients avec Python
+- Support aux équipes commerciales internationales
+- Missions à l'étranger : Singapour, Londres, New York
+
+Analyste Junior | Finance International | 2016 - 2018
+- Analyse de risques financiers
+- Reporting automatisé avec SQL et Python
+- Visualisation de données avec Tableau
+- Collaboration avec équipes internationales
+
+FORMATION
+
+Master en Data Science et Business Analytics | ESSEC Business School | 2014 - 2016
+- Double compétence : technique (ML, stats) et business
+- Échange académique : National University of Singapore (6 mois)
+- Mémoire sur l'analyse prédictive dans le retail
+- Mention Très Bien
+
+Master en Économie et Statistiques | Sciences Po Paris | 2012 - 2014
+- Spécialisation en économétrie et analyse quantitative
+- Cours en anglais et français
+
+Licence en Économie | Université Paris-Dauphine | 2009 - 2012
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (expert), R, SQL (expert), VBA
+Machine Learning : scikit-learn, XGBoost, LightGBM, TensorFlow (intermédiaire)
+Visualisation : Power BI (expert), Tableau (expert), Python (matplotlib, seaborn, plotly)
+Bases de données : SQL Server, PostgreSQL, MySQL, Oracle
+Cloud : AWS (SageMaker, S3, EC2), Azure, GCP (basique)
+Big Data : Spark (basique), Hadoop (notions)
+Outils : Git, Docker (basique), Jupyter Notebooks, Alteryx
+Statistiques : Tests statistiques, régression, time series analysis
+
+SOFT SKILLS
+
+- Excellente communication (présentations C-level)
+- Leadership et gestion de projets
+- Adaptabilité culturelle (expérience internationale)
+- Capacité à traduire les besoins business en solutions techniques
+- Travail en équipes multiculturelles
+- Résolution de problèmes complexes
+- Mentoring et formation
+- Gestion du stress et des deadlines
+
+RÉALISATIONS
+
+- Mise en place d'un système de prédiction de ventes pour un retailer international (15 pays)
+- Réduction de 30% des coûts marketing grâce à l'optimisation de campagnes
+- Formation de 100+ utilisateurs sur Power BI dans 5 pays
+- Publication d'un article sur l'analyse prédictive dans le retail (revue professionnelle)
+
+EXPÉRIENCE INTERNATIONALE
+
+- Missions de conseil : Singapour, Londres, New York, Tokyo
+- Équipes multiculturelles : collaboration avec équipes asiatiques, européennes, américaines
+- Langues de travail : français, anglais, espagnol (notions)
+
+LANGUES
+
+Français : Natif
+Anglais : Bilingue (TOEIC 990, expérience professionnelle)
+Espagnol : Intermédiaire
+Mandarin : Notions (apprentissage en cours)
+
+CERTIFICATIONS
+
+- AWS Certified Machine Learning - Specialty (2023)
+- Tableau Desktop Certified Professional (2022)
+- Microsoft Certified: Power BI Data Analyst Associate (2021)
+- Google Analytics Certified (2020)
+
+PUBLICATIONS
+
+- Article : "Predictive Analytics in Retail: A Case Study" - Data Science Journal (2023)
+- Présentation : "Cross-cultural Data Science Teams" - Data Science Conference Paris (2022)
+

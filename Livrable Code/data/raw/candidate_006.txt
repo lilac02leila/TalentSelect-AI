@@ -1,0 +1,76 @@
+CURRICULUM VITAE
+
+THOMAS BERNARD
+Data Analyst Junior / Aspirant Data Scientist
+Email: thomas.bernard@email.com
+Téléphone: +33 6 11 22 33 44
+LinkedIn: linkedin.com/in/thomasbernard
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Data Analyst Junior | StartupTech | 2023 - Présent
+- Analyse de données utilisateurs avec Python et pandas
+- Création de dashboards interactifs avec Power BI
+- Extraction de données depuis des APIs REST
+- Participation à des projets de machine learning (modèles de classification)
+- Support aux équipes produit pour l'analyse de métriques
+
+Stage Data Analyst | DataViz Solutions | Été 2022 (3 mois)
+- Nettoyage et préparation de données
+- Création de visualisations avec Tableau
+- Analyse exploratoire de données clients
+- Rédaction de rapports d'analyse
+
+Projets Personnels | 2022 - Présent
+- Développement d'un système de recommandation de films avec Python
+- Participation à des compétitions Kaggle (top 20%)
+- Blog technique sur le machine learning
+
+FORMATION
+
+Master en Informatique - Spécialité Data Science | Université de Lyon | 2021 - 2023
+- Projets en machine learning et deep learning
+- Mémoire sur l'analyse de sentiment avec NLP
+- Cours avancés en statistiques et probabilités
+
+Licence en Informatique | Université de Lyon | 2018 - 2021
+- Fondamentaux en programmation (Python, Java, C++)
+- Bases de données et structures de données
+- Algorithmes et complexité
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (bon niveau), SQL, JavaScript (basique)
+Machine Learning : scikit-learn, pandas, numpy (bonne maîtrise)
+Deep Learning : TensorFlow, Keras (niveau intermédiaire)
+Visualisation : Power BI, Tableau, Matplotlib, Plotly
+Bases de données : PostgreSQL, MySQL, MongoDB (basique)
+Outils : Git, Docker (basique), Jupyter Notebooks, VS Code
+Cloud : AWS (S3, EC2) - niveau débutant
+
+SOFT SKILLS
+
+- Motivation et passion pour la data science
+- Capacité d'apprentissage rapide
+- Communication claire et pédagogique
+- Travail d'équipe et collaboration
+- Créativité dans la résolution de problèmes
+- Persévérance et détermination
+
+PROJETS NOTABLES
+
+- Système de prédiction de prix immobiliers (Python, scikit-learn)
+- Analyse de sentiment sur Twitter (NLP, TensorFlow)
+- Dashboard de suivi de performance e-commerce (Power BI, SQL)
+
+LANGUES
+
+Français : Natif
+Anglais : Courant (TOEIC 880)
+Espagnol : Notions
+
+CERTIFICATIONS
+
+- Google Data Analytics Professional Certificate (2023)
+- Introduction to Machine Learning - Coursera (2022)
+

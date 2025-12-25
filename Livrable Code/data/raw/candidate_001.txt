@@ -1,0 +1,63 @@
+CURRICULUM VITAE
+
+JEAN DUPONT
+Data Scientist
+Email: jean.dupont@email.com
+Téléphone: +33 6 12 34 56 78
+LinkedIn: linkedin.com/in/jeandupont
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Data Scientist Senior | TechCorp | 2021 - Présent
+- Développement de modèles de machine learning pour la prédiction de ventes
+- Utilisation de Python, pandas, scikit-learn et TensorFlow
+- Création de dashboards Power BI pour la visualisation des résultats
+- Collaboration avec les équipes produit et business
+- Réduction de 15% des coûts opérationnels grâce à l'optimisation des modèles
+
+Data Scientist Junior | DataStart | 2019 - 2021
+- Analyse de données clients avec SQL et Python
+- Développement de modèles de classification
+- Présentation des résultats aux stakeholders
+- Expérience avec AWS (S3, EC2, SageMaker)
+
+Stage Data Analyst | BigData Inc. | Été 2018
+- Analyse exploratoire de données
+- Création de visualisations avec Tableau
+- Support à l'équipe data science
+
+FORMATION
+
+Master en Data Science | Université Paris-Saclay | 2017 - 2019
+- Spécialisation en Machine Learning et Deep Learning
+- Mémoire sur les réseaux de neurones pour la vision par ordinateur
+
+Licence en Mathématiques Appliquées | Université Paris-Diderot | 2014 - 2017
+
+COMPÉTENCES TECHNIQUES
+
+Langages de programmation : Python (expert), SQL, R
+Machine Learning : scikit-learn, TensorFlow, PyTorch, XGBoost
+Visualisation : Power BI, Tableau, Matplotlib, Seaborn
+Cloud : AWS (S3, EC2, SageMaker), Azure
+Bases de données : PostgreSQL, MongoDB
+Outils : Git, Docker, Jupyter Notebooks
+
+SOFT SKILLS
+
+- Communication efficace des résultats techniques à des publics non techniques
+- Leadership et capacité à mener des projets
+- Travail d'équipe et collaboration interdisciplinaire
+- Résolution de problèmes complexes
+- Adaptabilité et apprentissage continu
+
+CERTIFICATIONS
+
+- AWS Certified Machine Learning - Specialty (2022)
+- Google Cloud Professional Data Engineer (2021)
+
+LANGUES
+
+Français : Natif
+Anglais : Courant (TOEIC 950)
+

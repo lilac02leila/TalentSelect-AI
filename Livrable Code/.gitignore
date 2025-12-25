@@ -35,9 +35,11 @@ wheels/
 *~
 
 # Data
+# Ignore all data files except example files
 data/raw/*
-data/processed/*
 !data/raw/.gitkeep
+!data/raw/candidate_*.txt
+data/processed/*
 !data/processed/.gitkeep
 
 # ChromaDB

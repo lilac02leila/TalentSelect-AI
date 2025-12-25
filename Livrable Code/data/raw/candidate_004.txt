@@ -1,0 +1,59 @@
+CURRICULUM VITAE
+
+SOPHIE BERNARD
+Data Engineer / Data Scientist
+Email: sophie.bernard@email.com
+Téléphone: +33 6 55 44 33 22
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Data Engineer | CloudTech | 2021 - Présent
+- Conception et maintenance de pipelines de données avec Python et Spark
+- Optimisation de requêtes SQL sur grandes bases de données
+- Déploiement sur Azure avec Databricks
+- Collaboration avec les data scientists pour la mise en production de modèles ML
+- Expérience avec Power BI pour la création de dashboards
+
+Data Analyst | RetailData | 2019 - 2021
+- Extraction et transformation de données (ETL)
+- Analyse de données avec Python (pandas, numpy)
+- Création de rapports automatisés
+- Support aux équipes métier
+
+FORMATION
+
+Master en Ingénierie des Données | Télécom Paris | 2017 - 2019
+- Spécialisation en Big Data et Cloud Computing
+- Projets avec Hadoop, Spark, Kafka
+
+École d'Ingénieur en Informatique | INSA Lyon | 2014 - 2017
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (avancé), SQL (expert), Scala, Java
+Big Data : Apache Spark, Hadoop, Kafka, Airflow
+Cloud : Azure (expert), AWS, Databricks
+Bases de données : PostgreSQL, MongoDB, Cassandra, Redis
+Visualisation : Power BI, Tableau
+ML : scikit-learn, pandas, numpy (intermédiaire)
+Outils : Git, Docker, Kubernetes, Linux
+
+SOFT SKILLS
+
+- Excellente organisation et gestion de projets
+- Communication technique claire
+- Résolution de problèmes complexes
+- Travail en équipe agile
+- Autonomie et proactivité
+
+CERTIFICATIONS
+
+- Microsoft Certified: Azure Data Engineer Associate (2023)
+- Databricks Certified Associate Developer (2022)
+
+LANGUES
+
+Français : Natif
+Anglais : Courant
+Allemand : Intermédiaire
+

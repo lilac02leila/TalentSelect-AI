@@ -1,0 +1,63 @@
+CURRICULUM VITAE
+
+PIERRE LEBLANC
+Ingénieur Machine Learning
+Email: pierre.leblanc@email.com
+Téléphone: +33 7 11 22 33 44
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Ingénieur ML | AI Solutions | 2022 - Présent
+- Développement de modèles de deep learning avec PyTorch
+- Déploiement de modèles en production avec Docker et Kubernetes
+- Optimisation de performances et scaling sur cloud (GCP)
+- Publication de 2 articles scientifiques sur les transformers
+
+Data Scientist | ML Startup | 2020 - 2022
+- Développement de pipelines ML avec Python
+- Expérience avec TensorFlow et scikit-learn
+- Collaboration avec les équipes produit
+- Mise en place de systèmes de monitoring
+
+Stage Recherche | INRIA | Été 2019
+- Recherche sur les réseaux de neurones graphiques
+- Publication d'un article de conférence
+
+FORMATION
+
+Doctorat en Intelligence Artificielle | Sorbonne Université | 2016 - 2020
+- Thèse sur les modèles de langage pré-entraînés
+- Publications dans NeurIPS, ICML
+
+Master en Informatique | École Polytechnique | 2014 - 2016
+- Spécialisation en Machine Learning
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (expert), C++, Java, Scala
+ML/DL : PyTorch, TensorFlow, scikit-learn, HuggingFace
+NLP : Transformers, BERT, GPT, spaCy
+Cloud : GCP (expert), AWS, Azure
+MLOps : Docker, Kubernetes, MLflow, Kubeflow
+Bases de données : PostgreSQL, MongoDB, Redis
+Outils : Git, Linux, CI/CD
+
+SOFT SKILLS
+
+- Leadership technique et mentoring
+- Communication scientifique (publications, présentations)
+- Innovation et recherche de solutions créatives
+- Gestion de projets complexes
+- Collaboration internationale
+
+PUBLICATIONS
+
+- 5 articles dans des conférences top-tier (NeurIPS, ICML, ICLR)
+- 3 articles dans des journaux scientifiques
+
+LANGUES
+
+Français : Natif
+Anglais : Courant (publications en anglais)
+Espagnol : Intermédiaire
+

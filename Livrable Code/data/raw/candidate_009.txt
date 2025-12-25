@@ -1,0 +1,94 @@
+CURRICULUM VITAE
+
+LUCAS MOREAU
+Développeur Full-Stack en Reconversion vers Data Science
+Email: lucas.moreau@email.com
+Téléphone: +33 6 77 66 55 44
+LinkedIn: linkedin.com/in/lucasmoreau
+GitHub: github.com/lucasmoreau
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Développeur Full-Stack Senior | WebAgency | 2018 - Présent
+- Développement d'applications web avec React, Node.js, Python
+- Architecture de bases de données et optimisation de requêtes SQL
+- Gestion de projets techniques et encadrement d'équipe
+- Intégration d'APIs et développement backend
+- Expérience avec Docker, CI/CD, et déploiement cloud (AWS, Heroku)
+- Réalisation de projets data : analyse de logs utilisateurs, recommandations produits
+
+Développeur Web | StartupTech | 2016 - 2018
+- Développement frontend et backend
+- Bases de données relationnelles et NoSQL
+- Collaboration agile avec équipes produit
+
+Stage Développeur | TechCorp | Été 2015 (4 mois)
+- Développement d'applications web
+- Tests et débogage
+
+PROJETS DATA SCIENCE (Autoformation) | 2022 - Présent
+- Analyse prédictive de ventes e-commerce (Python, scikit-learn)
+- Système de recommandation de produits (collaborative filtering)
+- Dashboard analytique avec Streamlit
+- Projets Kaggle : compétitions de machine learning
+
+FORMATION
+
+Formation Data Science (Autoformation) | 2022 - Présent
+- Cours en ligne : Coursera, Udemy, DataCamp
+- Certifications : Machine Learning (Stanford), Deep Learning Specialization
+- Projets pratiques et compétitions Kaggle
+
+Master en Informatique | Université de Nantes | 2013 - 2016
+- Spécialisation en développement web et bases de données
+- Projets en Java, Python, JavaScript
+- Mémoire sur les architectures web modernes
+
+Licence en Informatique | Université de Nantes | 2010 - 2013
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (bon niveau), JavaScript, Java, SQL, HTML/CSS
+Machine Learning : scikit-learn, pandas, numpy (bonne maîtrise)
+Deep Learning : TensorFlow, Keras (niveau intermédiaire)
+Visualisation : Matplotlib, Seaborn, Plotly, Streamlit
+Bases de données : PostgreSQL, MySQL, MongoDB, Redis
+Web Development : React, Node.js, Flask, Django
+Cloud : AWS (EC2, S3, Lambda), Heroku
+Outils : Git, Docker, Jupyter Notebooks, VS Code
+ETL : Python (pandas), SQL
+
+SOFT SKILLS
+
+- Autonomie et capacité d'apprentissage
+- Résolution de problèmes techniques
+- Communication et travail d'équipe
+- Gestion de projets
+- Adaptabilité et polyvalence
+- Motivation pour la data science
+- Curiosité et veille technologique
+
+PROJETS DATA SCIENCE
+
+- Prédiction de churn clients avec machine learning (Python, scikit-learn)
+- Analyse de sentiment sur avis clients (NLP, TensorFlow)
+- Dashboard de suivi de métriques business (Streamlit, Python)
+- Système de recommandation de films (collaborative filtering)
+- Compétitions Kaggle : top 15% sur plusieurs compétitions
+
+MOTIVATION POUR LA RECONVERSION
+
+Passionné par la data science depuis 2 ans, j'ai entrepris une autoformation intensive tout en continuant mon activité de développeur. J'ai réalisé plusieurs projets concrets et participé à des compétitions Kaggle. Je souhaite maintenant me spécialiser pleinement en data science pour combiner mes compétences techniques de développement avec l'analyse de données et le machine learning.
+
+LANGUES
+
+Français : Natif
+Anglais : Courant (lecture de documentation technique)
+Espagnol : Notions
+
+CERTIFICATIONS
+
+- Machine Learning - Stanford University (Coursera) - 2023
+- Deep Learning Specialization - DeepLearning.AI (Coursera) - 2023
+- Data Science avec Python - DataCamp - 2022
+

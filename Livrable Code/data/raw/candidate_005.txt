@@ -1,0 +1,50 @@
+CURRICULUM VITAE
+
+THOMAS DUBOIS
+Business Analyst / Data Analyst
+Email: thomas.dubois@email.com
+Téléphone: +33 6 77 88 99 00
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Business Analyst Senior | FinanceGroup | 2020 - Présent
+- Analyse de données business avec Excel et Power BI
+- Création de modèles financiers
+- Reporting et présentation aux dirigeants
+- Support décisionnel basé sur les données
+- Expérience limitée avec Python pour l'automatisation
+
+Analyste Junior | ConsultPro | 2018 - 2020
+- Analyse de données clients
+- Création de rapports Excel
+- Support aux équipes commerciales
+
+FORMATION
+
+Master en Finance | HEC Paris | 2016 - 2018
+- Spécialisation en analyse financière
+
+Licence en Économie | Université Paris-Dauphine | 2013 - 2016
+
+COMPÉTENCES TECHNIQUES
+
+Outils d'analyse : Excel (expert), Power BI (avancé), Tableau (intermédiaire)
+Langages : Python (basique), SQL (basique), VBA
+Bases de données : SQL Server, Access
+Visualisation : Power BI, Excel, Tableau
+Statistiques : Analyse descriptive, régression
+
+SOFT SKILLS
+
+- Excellente communication et présentation
+- Capacité à traduire les besoins business en analyses
+- Travail sous pression et respect des délais
+- Relation client et gestion de projets
+- Esprit d'équipe
+
+LANGUES
+
+Français : Natif
+Anglais : Courant
+Espagnol : Intermédiaire
+

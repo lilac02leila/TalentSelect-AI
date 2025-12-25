@@ -1,0 +1,49 @@
+CURRICULUM VITAE
+
+MARIE MARTIN
+Data Analyst / Data Scientist
+Email: marie.martin@email.com
+Téléphone: +33 6 98 76 54 32
+
+EXPÉRIENCE PROFESSIONNELLE
+
+Data Analyst | FinanceCorp | 2020 - Présent
+- Analyse de données financières avec Python et SQL
+- Création de rapports automatisés avec Power BI
+- Support aux équipes commerciales avec des analyses ad-hoc
+- Expérience avec les données structurées et non structurées
+
+Analyste Junior | AnalyticsPro | 2018 - 2020
+- Extraction et nettoyage de données
+- Création de visualisations avec Excel avancé
+- Analyse statistique descriptive
+- Rédaction de rapports d'analyse
+
+FORMATION
+
+Master en Statistiques | ENSAE | 2016 - 2018
+- Spécialisation en analyse de données
+- Projets en R et Python
+
+Licence en Économie | Université Paris 1 | 2013 - 2016
+
+COMPÉTENCES TECHNIQUES
+
+Langages : Python (intermédiaire), SQL, R
+Outils d'analyse : pandas, numpy, scikit-learn (basique)
+Visualisation : Power BI, Excel avancé, Matplotlib
+Bases de données : SQL Server, MySQL
+Outils : Git (basique), Jupyter Notebooks
+
+SOFT SKILLS
+
+- Excellente communication écrite et orale
+- Capacité à travailler sous pression
+- Organisation et gestion du temps
+- Curiosité et volonté d'apprendre
+
+LANGUES
+
+Français : Natif
+Anglais : Courant
+
