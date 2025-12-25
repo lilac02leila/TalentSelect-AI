@@ -1,0 +1,47 @@
+POSTE : Business Intelligence Analyst
+
+DESCRIPTION :
+Nous recherchons un Business Intelligence Analyst pour concevoir et développer des solutions BI qui permettront aux équipes business de prendre des décisions data-driven. Le candidat sera responsable de la création de dashboards, de la modélisation de données et de l'automatisation de rapports.
+
+EXIGENCES TECHNIQUES :
+- Expertise en Power BI (DAX, modélisation de données) ou Tableau
+- Maîtrise de SQL (requêtes complexes, optimisation, data warehousing)
+- Connaissance des bases de données relationnelles (SQL Server, PostgreSQL)
+- Expérience avec les outils ETL (SSIS, Azure Data Factory, ou équivalents)
+- Connaissance de Python ou R pour l'automatisation serait un plus
+- Expérience avec Excel avancé (formules complexes, VBA)
+- Connaissance du cloud (Azure, AWS) pour les solutions BI cloud
+- Compréhension des concepts de data warehousing et modélisation multidimensionnelle
+
+EXIGENCES GÉNÉRALES :
+- Minimum 3-4 ans d'expérience en Business Intelligence
+- Formation en informatique, gestion, ou domaine équivalent
+- Expérience dans la conception de solutions BI pour utilisateurs business
+- Capacité à comprendre les besoins métier et à les traduire en solutions techniques
+- Excellentes compétences en communication et formation d'utilisateurs
+
+SOFT SKILLS RECHERCHÉS :
+- Excellente communication avec les parties prenantes business
+- Capacité à traduire les besoins métier en solutions techniques
+- Leadership et gestion de projets
+- Organisation et gestion du temps
+- Mentoring et formation d'utilisateurs
+- Orientation résultats
+- Capacité à travailler avec des équipes multidisciplinaires
+
+MISSIONS PRINCIPALES :
+- Concevoir et développer des dashboards interactifs (Power BI, Tableau)
+- Modéliser des données pour optimiser les performances des rapports
+- Automatiser la génération de rapports et dashboards
+- Former les utilisateurs business sur les outils BI
+- Collaborer avec les équipes IT pour l'architecture des données
+- Analyser les besoins métier et proposer des solutions BI adaptées
+- Maintenir et optimiser les solutions BI existantes
+- Créer de la documentation technique et utilisateur
+
+PLUS VALUÉS :
+- Certification Power BI ou Tableau
+- Expérience avec QlikView ou autres outils BI
+- Connaissance de DAX avancé et optimisation de modèles Power BI
+- Expérience en gestion de projets BI
+

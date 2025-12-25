@@ -1,0 +1,47 @@
+POSTE : Machine Learning Engineer
+
+DESCRIPTION :
+Nous recherchons un Machine Learning Engineer expérimenté pour développer, déployer et maintenir des modèles de machine learning en production. Le candidat travaillera sur des projets d'IA de bout en bout, de la recherche à la mise en production.
+
+EXIGENCES TECHNIQUES :
+- Expertise en Python (expert niveau)
+- Maîtrise approfondie du Machine Learning et Deep Learning (PyTorch, TensorFlow)
+- Expérience en MLOps : déploiement de modèles, monitoring, versioning (MLflow, Kubeflow)
+- Connaissance des architectures cloud (AWS SageMaker, GCP AI Platform, Azure ML)
+- Expérience avec Docker et Kubernetes pour le déploiement
+- Connaissance des pipelines de données (Apache Spark, Airflow)
+- Expérience avec les bases de données (PostgreSQL, MongoDB)
+- Connaissance de Git, CI/CD, et bonnes pratiques de développement
+- Expérience avec les APIs REST et microservices
+
+EXIGENCES GÉNÉRALES :
+- Minimum 3-4 ans d'expérience en Machine Learning Engineering
+- Formation en informatique, mathématiques, ou ingénierie
+- Expérience avérée en déploiement de modèles ML en production
+- Compréhension des enjeux de scalabilité et performance
+- Capacité à travailler dans un environnement agile
+
+SOFT SKILLS RECHERCHÉS :
+- Excellence technique et rigueur
+- Résolution de problèmes complexes
+- Communication technique claire
+- Travail en équipe et collaboration
+- Autonomie et proactivité
+- Capacité à apprendre rapidement de nouvelles technologies
+- Attention aux détails et qualité du code
+
+MISSIONS PRINCIPALES :
+- Développer et optimiser des modèles de machine learning
+- Mettre en production des modèles avec monitoring et versioning
+- Construire des pipelines de données pour l'entraînement
+- Optimiser les performances des modèles (latence, throughput)
+- Collaborer avec les data scientists pour industrialiser leurs modèles
+- Maintenir et améliorer les systèmes ML en production
+- Documenter les architectures et processus techniques
+
+PLUS VALUÉS :
+- Expérience avec le NLP ou Computer Vision
+- Publications scientifiques ou contributions open-source
+- Expérience avec les Transformers et architectures modernes
+- Connaissance du big data (Hadoop, Spark)
+

@@ -1,0 +1,36 @@
+POSTE : Data Analyst
+
+DESCRIPTION :
+Nous recherchons un Data Analyst pour rejoindre notre équipe analytics et soutenir les décisions business par l'analyse de données. Le candidat sera responsable de l'extraction, l'analyse et la présentation de données pour aider les équipes à prendre des décisions éclairées.
+
+EXIGENCES TECHNIQUES :
+- Maîtrise de SQL (requêtes complexes, jointures, agrégations)
+- Bonne connaissance de Python (pandas, numpy) ou R
+- Expérience avec Power BI ou Tableau pour la création de dashboards
+- Connaissance d'Excel avancé (formules complexes, tableaux croisés dynamiques)
+- Expérience avec les bases de données relationnelles (PostgreSQL, MySQL, SQL Server)
+- Connaissance des outils ETL serait un plus
+
+EXIGENCES GÉNÉRALES :
+- Minimum 1-2 ans d'expérience en analyse de données
+- Formation en statistiques, économie, informatique ou domaine équivalent
+- Capacité à comprendre les besoins business et à les traduire en analyses
+- Excellentes compétences en communication écrite et orale
+- Rigueur et attention aux détails
+
+SOFT SKILLS RECHERCHÉS :
+- Excellente communication pour présenter des résultats à des publics non techniques
+- Capacité à travailler sous pression et respecter les deadlines
+- Organisation et gestion du temps
+- Curiosité et esprit d'analyse
+- Travail d'équipe et collaboration
+- Capacité à identifier les insights pertinents dans les données
+
+MISSIONS PRINCIPALES :
+- Extraire et analyser des données depuis diverses sources
+- Créer des dashboards et rapports automatisés
+- Effectuer des analyses ad-hoc pour répondre aux questions business
+- Identifier des tendances et patterns dans les données
+- Présenter les résultats aux équipes métier
+- Automatiser les processus d'analyse répétitifs
+

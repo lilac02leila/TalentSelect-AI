@@ -1,0 +1,59 @@
+POSTE : Data Scientist Senior / Lead Data Scientist
+
+DESCRIPTION :
+Nous recherchons un Data Scientist Senior pour diriger des projets stratégiques de data science et encadrer une équipe de data scientists. Le candidat sera responsable de la conception de solutions ML avancées, de la recherche appliquée, et du mentoring d'équipe.
+
+EXIGENCES TECHNIQUES :
+- Expertise en Python (niveau expert) et écosystème data science
+- Maîtrise approfondie du Machine Learning et Deep Learning (scikit-learn, TensorFlow, PyTorch)
+- Expérience avec les techniques avancées : NLP, Computer Vision, Recommender Systems
+- Connaissance des méthodes statistiques avancées et expérimentation
+- Expérience avec MLOps et déploiement de modèles en production
+- Connaissance du cloud (AWS, GCP, Azure) pour les projets ML
+- Expérience avec les bases de données (SQL, NoSQL)
+- Connaissance des outils de visualisation (Power BI, Tableau, Python)
+- Expérience avec Git, Docker, et bonnes pratiques de développement
+
+EXIGENCES GÉNÉRALES :
+- Minimum 5-6 ans d'expérience en Data Science
+- Formation en informatique, mathématiques, statistiques, ou domaine équivalent (Master/PhD)
+- Expérience avérée en leadership d'équipe et gestion de projets
+- Expérience en recherche appliquée et innovation
+- Capacité à travailler avec des parties prenantes de haut niveau (C-level)
+- Publications scientifiques ou contributions open-source seraient un plus
+
+SOFT SKILLS RECHERCHÉS :
+- Leadership technique et mentoring
+- Excellente communication (présentations C-level)
+- Capacité à traduire les besoins business en solutions techniques
+- Innovation et recherche de solutions créatives
+- Gestion de projets complexes et multi-équipes
+- Résolution de problèmes complexes
+- Capacité à prendre des décisions stratégiques
+- Collaboration interdisciplinaire
+
+MISSIONS PRINCIPALES :
+- Diriger des projets stratégiques de data science de bout en bout
+- Encadrer et former une équipe de data scientists (2-5 personnes)
+- Développer des modèles ML avancés pour résoudre des problèmes business complexes
+- Effectuer de la recherche appliquée et explorer de nouvelles techniques
+- Collaborer avec les équipes business pour identifier les opportunités data
+- Présenter les résultats et recommandations aux dirigeants
+- Définir la stratégie data science de l'organisation
+- Assurer la qualité technique et scientifique des solutions
+- Participer à la veille technologique et innovation
+
+RESPONSABILITÉS LEADERSHIP :
+- Encadrement d'équipe et développement des compétences
+- Recrutement et intégration de nouveaux data scientists
+- Définition des standards techniques et bonnes pratiques
+- Gestion de la roadmap des projets data science
+- Communication avec les parties prenantes stratégiques
+
+PLUS VALUÉS :
+- Doctorat en IA, Machine Learning, ou domaine équivalent
+- Publications dans des conférences ou journaux scientifiques
+- Expérience en startup ou scale-up tech
+- Expérience internationale
+- Contributions open-source significatives
+

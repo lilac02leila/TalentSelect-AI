@@ -1,0 +1,26 @@
+POSTE : Data Scientist
+
+DESCRIPTION :
+Nous recherchons un Data Scientist expérimenté pour rejoindre notre équipe d'innovation. 
+Le candidat idéal aura une solide expérience en analyse de données et en machine learning.
+
+EXIGENCES TECHNIQUES :
+- Maîtrise de Python (pandas, numpy, scikit-learn)
+- Expérience en Machine Learning et Deep Learning
+- Connaissance de Power BI pour la visualisation de données
+- Expérience avec les bases de données SQL
+- Connaissance du cloud (AWS, Azure ou GCP) serait un plus
+
+EXIGENCES GÉNÉRALES :
+- Minimum 2 ans d'expérience en Data Science
+- Formation en informatique, mathématiques, statistiques ou domaine équivalent
+- Capacité à travailler en équipe
+- Excellentes compétences en communication
+- Curiosité et capacité d'adaptation
+
+SOFT SKILLS RECHERCHÉS :
+- Communication claire des résultats techniques
+- Travail d'équipe et collaboration
+- Résolution de problèmes complexes
+- Capacité à gérer plusieurs projets simultanément
+
