@@ -24,8 +24,13 @@ class CandidateSelectionSystem:
             if not api_key:
                 raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
             
+            # Remove proxy environment variables to prevent proxies parameter error
+            # This fixes the "unexpected keyword argument 'proxies'" error
+            proxy_vars = ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']
+            for var in proxy_vars:
+                os.environ.pop(var, None)
+            
             # Initialize ChatGroq with correct parameters
-            # Remove any potential proxies parameter that might be passed
             self.llm = ChatGroq(
                 model=GROQ_MODEL,
                 temperature=TEMPERATURE,
