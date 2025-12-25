@@ -6,6 +6,9 @@ from pathlib import Path
 # Load environment variables
 load_dotenv()
 
+# Get the base directory (where app.py is located)
+BASE_DIR = Path(__file__).parent.resolve()
+
 import streamlit as st
 import pandas as pd
 import json
@@ -285,7 +288,9 @@ if 'evaluation_results' not in st.session_state:
 
 def load_and_process_candidates():
     """Load and process candidate documents."""
-    loader = DataLoader("data/raw")
+    # Use path relative to app.py location
+    data_dir = BASE_DIR / "data" / "raw"
+    loader = DataLoader(str(data_dir))
     processor = TextProcessor()
     
     candidates = loader.load_all_candidates()
@@ -548,6 +553,21 @@ def show_exploratory_analysis():
     with col2:
         if st.button("🚀 Charger et Traiter les Candidats", type="primary", use_container_width=True):
             with st.spinner("Chargement et traitement des candidats en cours..."):
+                # Debug: Check if directory exists (using BASE_DIR)
+                data_path = BASE_DIR / "data" / "raw"
+                if not data_path.exists():
+                    st.error(f"❌ Le dossier '{data_path}' n'existe pas!")
+                    st.info(f"📁 Répertoire de base (app.py): {BASE_DIR}")
+                    st.info(f"📁 Répertoire actuel: {os.getcwd()}")
+                    st.info(f"📂 Contenu du répertoire de base: {', '.join(os.listdir(BASE_DIR)) if BASE_DIR.exists() else 'N/A'}")
+                else:
+                    files_in_dir = [f.name for f in data_path.iterdir() if f.is_file()]
+                    if not files_in_dir:
+                        st.warning(f"⚠️ Le dossier '{data_path}' existe mais est vide!")
+                        st.info("💡 Assurez-vous que les fichiers candidate_*.txt sont dans le dépôt GitHub.")
+                    else:
+                        st.info(f"📁 Fichiers trouvés dans {data_path}: {', '.join(files_in_dir[:5])}{'...' if len(files_in_dir) > 5 else ''}")
+                
                 candidates = load_and_process_candidates()
                 st.session_state.processed_candidates = candidates
                 
@@ -560,6 +580,7 @@ def show_exploratory_analysis():
                     st.rerun()
                 else:
                     st.warning("⚠️ Aucun candidat trouvé. Vérifiez que les fichiers sont dans data/raw/")
+                    st.info("💡 Les fichiers doivent être dans le dépôt GitHub pour être disponibles sur Streamlit Cloud.")
     
     if st.session_state.processed_candidates:
         st.markdown('<div class="section-header">📈 Statistiques des Candidats</div>', unsafe_allow_html=True)
@@ -695,8 +716,8 @@ def show_evaluation_page():
         </h3>
     """, unsafe_allow_html=True)
     
-    # Load available job descriptions
-    job_descriptions_dir = Path("data/job_descriptions")
+    # Load available job descriptions (using BASE_DIR)
+    job_descriptions_dir = BASE_DIR / "data" / "job_descriptions"
     available_jobs = []
     if job_descriptions_dir.exists():
         available_jobs = [f.name for f in job_descriptions_dir.iterdir() if f.is_file() and f.suffix == '.txt']
@@ -730,7 +751,8 @@ def show_evaluation_page():
             # Load only if a different file is selected
             if st.session_state.last_selected_job != selected_job_file:
                 loader = DataLoader()
-                loaded_description = loader.load_job_description(selected_job_file)
+                job_file_path = BASE_DIR / "data" / "job_descriptions" / selected_job_file
+                loaded_description = loader.load_text(str(job_file_path)) if job_file_path.exists() else ""
                 if loaded_description:
                     st.session_state.current_job_description = loaded_description
                     st.session_state.last_selected_job = selected_job_file
@@ -741,7 +763,8 @@ def show_evaluation_page():
                 # Ensure we have the description loaded
                 if not st.session_state.current_job_description:
                     loader = DataLoader()
-                    loaded_description = loader.load_job_description(selected_job_file)
+                    job_file_path = BASE_DIR / "data" / "job_descriptions" / selected_job_file
+                    loaded_description = loader.load_text(str(job_file_path)) if job_file_path.exists() else ""
                     if loaded_description:
                         st.session_state.current_job_description = loaded_description
             
