@@ -18,6 +18,21 @@ class CandidateSelectionSystem:
     def __init__(self):
         # Initialize LLM with Groq
         try:
+            # Monkey patch to fix proxies error
+            # This intercepts the Client.init() call and removes proxies parameter
+            try:
+                from groq import Client
+                original_init = Client.__init__
+                
+                def patched_init(self, *args, **kwargs):
+                    # Remove proxies if present
+                    kwargs.pop('proxies', None)
+                    return original_init(self, *args, **kwargs)
+                
+                Client.__init__ = patched_init
+            except (ImportError, AttributeError):
+                pass  # If patching fails, continue anyway
+            
             from langchain_groq import ChatGroq
             
             api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")
@@ -25,7 +40,6 @@ class CandidateSelectionSystem:
                 raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
             
             # Remove proxy environment variables to prevent proxies parameter error
-            # This fixes the "unexpected keyword argument 'proxies'" error
             proxy_vars = ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']
             for var in proxy_vars:
                 os.environ.pop(var, None)
