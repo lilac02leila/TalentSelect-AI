@@ -29,7 +29,7 @@ from candidate_selection_system import CandidateSelectionSystem
 # Page configuration
 st.set_page_config(
     page_title="TalentSelect AI - Sélection Intelligente de Candidats",
-    page_icon="🎯",
+    page_icon="🎀",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -318,7 +318,7 @@ def main():
     # Professional Header
     st.markdown("""
         <div class="main-header">
-            <h1>🎯 TalentSelect AI</h1>
+            <h1>🎀 TalentSelect AI</h1>
             <p>Système Multi-Agents pour la Sélection Intelligente de Candidats</p>
         </div>
     """, unsafe_allow_html=True)
@@ -334,7 +334,7 @@ def main():
     
     page = st.sidebar.radio(
         "Choisir une section",
-        ["🏠 Accueil", "📊 Analyse Exploratoire", "🤖 Évaluation Multi-Agents", "📈 Résultats"],
+        ["🏠 Accueil", "Analyse Exploratoire", "Évaluation Multi-Agents", "📈 Résultats"],
         label_visibility="collapsed"
     )
     
@@ -352,9 +352,9 @@ def main():
     
     if page == "🏠 Accueil":
         show_home_page()
-    elif page == "📊 Analyse Exploratoire":
+    elif page == "Analyse Exploratoire":
         show_exploratory_analysis()
-    elif page == "🤖 Évaluation Multi-Agents":
+    elif page == "Évaluation Multi-Agents":
         show_evaluation_page()
     elif page == "📈 Résultats":
         show_results_page()
@@ -389,7 +389,7 @@ def show_home_page():
     """, unsafe_allow_html=True)
     
     # Agents Section
-    st.markdown('<div class="section-header">🤖 Architecture Multi-Agents</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header"> Architecture Multi-Agents</div>', unsafe_allow_html=True)
     
     agents_data = [
         {"name": "Agent RH", "icon": "👔", "description": "Analyse les descriptions de poste et les critères du recruteur", "color": "#667eea"},
@@ -539,7 +539,7 @@ def show_home_page():
 
 def show_exploratory_analysis():
     """Display exploratory analysis page."""
-    st.markdown('<div class="section-header">📊 Analyse Exploratoire des Données</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header"> Analyse Exploratoire des Données</div>', unsafe_allow_html=True)
     
     # Load Data Section
     st.markdown("""
@@ -701,7 +701,7 @@ def show_exploratory_analysis():
 
 def show_evaluation_page():
     """Display the evaluation page."""
-    st.markdown('<div class="section-header">🤖 Évaluation Multi-Agents</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header"> Évaluation Multi-Agents</div>', unsafe_allow_html=True)
     
     st.markdown("""
         <div class="info-card">
