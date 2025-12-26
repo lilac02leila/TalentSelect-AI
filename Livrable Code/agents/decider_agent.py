@@ -10,6 +10,8 @@ def create_decider_agent(llm=None):
     """Create the Decider Agent."""
     if llm is None:
         from langchain_groq import ChatGroq
+        from groq_patch import patch_langchain_groq
+        patch_langchain_groq()
         api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")
         if not api_key:
             raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")

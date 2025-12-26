@@ -9,6 +9,8 @@ from utils.config import GROQ_MODEL, TEMPERATURE
 def create_soft_skills_agent(llm=None):
     """Create the Soft Skills Agent."""
     if llm is None:
+        from groq_patch import patch_langchain_groq
+        patch_langchain_groq()
         from utils.config import GROQ_API_KEY
         llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE, api_key=GROQ_API_KEY)
     

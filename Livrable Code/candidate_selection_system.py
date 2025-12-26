@@ -22,15 +22,13 @@ class CandidateSelectionSystem:
         # Initialize LLM with Groq
         try:
             from langchain_groq import ChatGroq
+            # Apply patch after import
+            from groq_patch import patch_langchain_groq
+            patch_langchain_groq()
             
             api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")
             if not api_key:
                 raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
-            
-            # Remove proxy environment variables to prevent proxies parameter error
-            proxy_vars = ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']
-            for var in proxy_vars:
-                os.environ.pop(var, None)
             
             # Initialize ChatGroq with correct parameters
             self.llm = ChatGroq(
