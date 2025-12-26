@@ -1,4 +1,7 @@
 """Streamlit interface for the Candidate Selection System."""
+# IMPORTANT: Import groq_patch FIRST to fix proxies error
+import groq_patch  # noqa: F401
+
 import os
 from dotenv import load_dotenv
 from pathlib import Path

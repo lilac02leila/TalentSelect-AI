@@ -1,4 +1,6 @@
 """Technical Agent - Evaluates technical skills."""
+import groq_patch  # noqa: F401 - Fix for proxies error
+
 from crewai import Agent
 from langchain_groq import ChatGroq
 from utils.config import GROQ_MODEL, TEMPERATURE

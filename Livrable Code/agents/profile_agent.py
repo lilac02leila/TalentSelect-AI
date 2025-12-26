@@ -1,4 +1,6 @@
 """Profile Agent - Analyzes CVs and cover letters."""
+import groq_patch  # noqa: F401 - Fix for proxies error
+
 from crewai import Agent
 from langchain_groq import ChatGroq
 from utils.config import GROQ_MODEL, TEMPERATURE

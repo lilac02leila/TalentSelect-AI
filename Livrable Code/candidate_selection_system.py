@@ -1,4 +1,7 @@
 """Main orchestration system for multi-agent candidate selection."""
+# Import groq_patch first to fix proxies error
+import groq_patch  # noqa: F401
+
 from crewai import Crew, Task
 from typing import List, Dict, Optional
 import json
@@ -18,21 +21,6 @@ class CandidateSelectionSystem:
     def __init__(self):
         # Initialize LLM with Groq
         try:
-            # Monkey patch to fix proxies error
-            # This intercepts the Client.init() call and removes proxies parameter
-            try:
-                from groq import Client
-                original_init = Client.__init__
-                
-                def patched_init(self, *args, **kwargs):
-                    # Remove proxies if present
-                    kwargs.pop('proxies', None)
-                    return original_init(self, *args, **kwargs)
-                
-                Client.__init__ = patched_init
-            except (ImportError, AttributeError):
-                pass  # If patching fails, continue anyway
-            
             from langchain_groq import ChatGroq
             
             api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")

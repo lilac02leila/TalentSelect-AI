@@ -1,4 +1,6 @@
 """Decider Agent - Aggregates opinions and makes final decisions."""
+import groq_patch  # noqa: F401 - Fix for proxies error
+
 from crewai import Agent
 from utils.config import GROQ_MODEL, TEMPERATURE, GROQ_API_KEY
 import os
