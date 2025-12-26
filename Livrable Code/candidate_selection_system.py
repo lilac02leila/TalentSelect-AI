@@ -1,6 +1,9 @@
 """Main orchestration system for multi-agent candidate selection."""
-# Import groq_patch first to fix proxies error
+# IMPORTANT: Import groq_patch FIRST to fix proxies error
+# This must be imported before any groq or langchain_groq imports
 import groq_patch  # noqa: F401
+# Apply patch immediately
+from groq_patch import patch_langchain_groq
 
 from crewai import Crew, Task
 from typing import List, Dict, Optional
@@ -21,16 +24,16 @@ class CandidateSelectionSystem:
     def __init__(self):
         # Initialize LLM with Groq
         try:
-            from langchain_groq import ChatGroq
-            # Apply patch after import
-            from groq_patch import patch_langchain_groq
+            # Ensure patch is applied before importing ChatGroq
             patch_langchain_groq()
+            
+            from langchain_groq import ChatGroq
             
             api_key = GROQ_API_KEY or os.getenv("GROQ_API_KEY", "")
             if not api_key:
                 raise ValueError("GROQ_API_KEY not found in environment. Please set it in your .env file")
             
-            # Initialize ChatGroq with correct parameters
+            # Initialize ChatGroq with correct parameters (no proxies)
             self.llm = ChatGroq(
                 model=GROQ_MODEL,
                 temperature=TEMPERATURE,
@@ -39,6 +42,8 @@ class CandidateSelectionSystem:
             print(f"✅ Groq LLM initialized with model: {GROQ_MODEL}")
         except Exception as e:
             print(f"❌ Error initializing Groq LLM: {e}")
+            import traceback
+            traceback.print_exc()
             raise
         
         # Initialize agents

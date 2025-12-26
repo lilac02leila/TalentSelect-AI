@@ -1,6 +1,9 @@
 """Streamlit interface for the Candidate Selection System."""
 # IMPORTANT: Import groq_patch FIRST to fix proxies error
 import groq_patch  # noqa: F401
+# Apply patch immediately
+from groq_patch import patch_langchain_groq
+patch_langchain_groq()
 
 import os
 from dotenv import load_dotenv
@@ -903,10 +906,33 @@ def show_evaluation_page():
                     # Initialize system
                     try:
                         with st.spinner("Initialisation du système multi-agents..."):
+                            # Ensure patch is applied before initialization
+                            patch_langchain_groq()
                             system = CandidateSelectionSystem()
                     except Exception as e:
-                        st.error(f"❌ Erreur lors de l'initialisation: {e}")
-                        st.info("💡 Assurez-vous que GROQ_API_KEY est défini dans votre fichier .env")
+                        error_msg = str(e)
+                        st.error(f"❌ Erreur lors de l'initialisation: {error_msg}")
+                        
+                        # Provide specific help based on error type
+                        if 'proxies' in error_msg.lower():
+                            st.error("""
+                            **Erreur liée aux proxies détectée.**
+                            
+                            Cette erreur est causée par une incompatibilité entre `langchain-groq` et `groq`.
+                            Le patch devrait normalement corriger ce problème. Si l'erreur persiste :
+                            
+                            1. Vérifiez que `groq_patch.py` est bien importé en premier
+                            2. Redéployez l'application
+                            3. Vérifiez que les versions dans `requirements.txt` sont correctes
+                            """)
+                        elif 'GROQ_API_KEY' in error_msg or 'api_key' in error_msg.lower():
+                            st.info("💡 Assurez-vous que GROQ_API_KEY est défini dans vos secrets Streamlit (Streamlit Cloud) ou dans votre fichier .env (local)")
+                        else:
+                            st.info("💡 Vérifiez les logs pour plus de détails sur l'erreur")
+                        
+                        import traceback
+                        with st.expander("🔍 Détails de l'erreur"):
+                            st.code(traceback.format_exc())
                         return
                     
                     # Evaluate candidates
