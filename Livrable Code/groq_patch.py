@@ -43,10 +43,14 @@ def _patch_groq_client():
             _original_client_class = groq.Client
             _original_client_init_stored = groq.Client.__init__
             
-            # Also store __new__ if it exists
+            # Check if Client has a custom __new__ (not object.__new__)
             _original_client_new_stored = None
             if hasattr(groq.Client, '__new__'):
-                _original_client_new_stored = groq.Client.__new__
+                # Only patch if it's not object.__new__ (which takes only cls)
+                client_new = groq.Client.__new__
+                # Check if it's a custom __new__ by checking if it's not object.__new__
+                if client_new is not object.__new__:
+                    _original_client_new_stored = client_new
             
             def _clean_proxy_kwargs(kwargs):
                 """Helper function to remove all proxy-related parameters."""
@@ -109,25 +113,33 @@ def _patch_groq_client():
             # Apply patch to __init__
             groq.Client.__init__ = _patched_client_init
             
-            # Also patch __new__ if it exists (critical for class instantiation)
-            if _original_client_new_stored is not None and not hasattr(groq.Client.__new__, '_groq_patch_applied'):
-                def _patched_client_new(cls, *args, **kwargs):
-                    """Patched __new__ that removes proxies parameter."""
-                    # Clean all proxy-related parameters BEFORE calling original
-                    _clean_proxy_kwargs(kwargs)
-                    try:
-                        return _original_client_new_stored(cls, *args, **kwargs)
-                    except (TypeError, ValueError, Exception) as e:
-                        error_str = str(e).lower()
-                        if any(keyword in error_str for keyword in ['proxies', 'unexpected keyword', 'proxy']):
-                            # Clean again and retry
-                            _clean_proxy_kwargs(kwargs)
+            # Also patch __new__ if it exists and is custom (not object.__new__)
+            if _original_client_new_stored is not None:
+                # Check if already patched
+                if not hasattr(groq.Client.__new__, '_groq_patch_applied'):
+                    def _patched_client_new(cls, *args, **kwargs):
+                        """Patched __new__ that removes proxies parameter."""
+                        # Clean all proxy-related parameters BEFORE calling original
+                        _clean_proxy_kwargs(kwargs)
+                        try:
                             return _original_client_new_stored(cls, *args, **kwargs)
-                        raise
-                
-                _patched_client_new._groq_patch_applied = True
-                groq.Client.__new__ = _patched_client_new
-                print("✅ Patched groq.Client.__new__")
+                        except (TypeError, ValueError, Exception) as e:
+                            error_str = str(e).lower()
+                            if any(keyword in error_str for keyword in ['proxies', 'unexpected keyword', 'proxy']):
+                                # Clean again and retry
+                                _clean_proxy_kwargs(kwargs)
+                                return _original_client_new_stored(cls, *args, **kwargs)
+                            raise
+                    
+                    _patched_client_new._groq_patch_applied = True
+                    groq.Client.__new__ = _patched_client_new
+                    print("✅ Patched groq.Client.__new__")
+                else:
+                    print("✅ groq.Client.__new__ already patched")
+            else:
+                # No custom __new__, so we don't need to patch it
+                # The __init__ patch should be sufficient
+                print("ℹ️ groq.Client uses object.__new__, no custom __new__ to patch")
             
             _groq_client_patched = True
             print("✅ Patched groq.Client.__init__ and __new__")
