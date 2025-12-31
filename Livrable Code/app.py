@@ -911,28 +911,54 @@ def show_evaluation_page():
                             system = CandidateSelectionSystem()
                     except Exception as e:
                         error_msg = str(e)
-                        st.error(f"❌ Erreur lors de l'initialisation: {error_msg}")
+                        error_info = parse_rate_limit_error(error_msg)
                         
-                        # Provide specific help based on error type
-                        if 'proxies' in error_msg.lower():
+                        # Check for rate limit error first
+                        if error_info.get('is_rate_limit'):
                             st.error("""
-                            **Erreur liée aux proxies détectée.**
+                            ## ⏰ Quota API Dépassé
                             
-                            Cette erreur est causée par une incompatibilité entre `langchain-groq` et `groq`.
-                            Le patch devrait normalement corriger ce problème. Si l'erreur persiste :
+                            **Le quota quotidien de l'API a été atteint.**
                             
-                            1. Vérifiez que `groq_patch.py` est bien importé en premier
-                            2. Redéployez l'application
-                            3. Vérifiez que les versions dans `requirements.txt` sont correctes
+                            Veuillez patienter avant de relancer une évaluation. Le quota se réinitialise automatiquement.
                             """)
-                        elif 'GROQ_API_KEY' in error_msg or 'api_key' in error_msg.lower():
-                            st.info("💡 Assurez-vous que GROQ_API_KEY est défini dans vos secrets Streamlit (Streamlit Cloud) ou dans votre fichier .env (local)")
+                            
+                            if error_info.get('wait_time'):
+                                st.info(f"⏱️ **Temps d'attente estimé :** {error_info['wait_time']}")
+                            
+                            if error_info.get('limit') and error_info.get('used'):
+                                st.info(f"📊 **Quota :** {error_info['used']} / {error_info['limit']} tokens utilisés aujourd'hui")
+                            
+                            st.markdown("""
+                            ---
+                            **Que faire ?**
+                            - ⏳ Attendez quelques minutes et réessayez
+                            - 🔄 Le quota se réinitialise à minuit (UTC)
+                            - 💡 Pour une limite plus élevée, contactez l'administrateur du système
+                            """)
                         else:
-                            st.info("💡 Vérifiez les logs pour plus de détails sur l'erreur")
-                        
-                        import traceback
-                        with st.expander("🔍 Détails de l'erreur"):
-                            st.code(traceback.format_exc())
+                            st.error(f"❌ Erreur lors de l'initialisation: {error_msg}")
+                            
+                            # Provide specific help based on error type
+                            if 'proxies' in error_msg.lower():
+                                st.error("""
+                                **Erreur liée aux proxies détectée.**
+                                
+                                Cette erreur est causée par une incompatibilité entre `langchain-groq` et `groq`.
+                                Le patch devrait normalement corriger ce problème. Si l'erreur persiste :
+                                
+                                1. Vérifiez que `groq_patch.py` est bien importé en premier
+                                2. Redéployez l'application
+                                3. Vérifiez que les versions dans `requirements.txt` sont correctes
+                                """)
+                            elif 'GROQ_API_KEY' in error_msg or 'api_key' in error_msg.lower():
+                                st.info("💡 Assurez-vous que GROQ_API_KEY est défini dans vos secrets Streamlit (Streamlit Cloud) ou dans votre fichier .env (local)")
+                            else:
+                                st.info("💡 Vérifiez les logs pour plus de détails sur l'erreur")
+                            
+                            import traceback
+                            with st.expander("🔍 Détails de l'erreur"):
+                                st.code(traceback.format_exc())
                         return
                     
                     # Evaluate candidates
@@ -948,7 +974,37 @@ def show_evaluation_page():
                             evaluation = system.evaluate_candidate(candidate, eval_job_description)
                             results.append(evaluation)
                         except Exception as e:
-                            st.error(f"Erreur lors de l'évaluation du candidat {candidate['candidate_id']}: {e}")
+                            error_info = parse_rate_limit_error(e)
+                            
+                            if error_info['is_rate_limit']:
+                                # Display user-friendly rate limit message
+                                st.error("""
+                                ## ⏰ Quota API Dépassé
+                                
+                                **Le quota quotidien de l'API a été atteint.**
+                                
+                                Veuillez patienter avant de relancer une évaluation. Le quota se réinitialise automatiquement.
+                                """)
+                                
+                                if error_info.get('wait_time'):
+                                    st.info(f"⏱️ **Temps d'attente estimé :** {error_info['wait_time']}")
+                                
+                                if error_info.get('limit') and error_info.get('used'):
+                                    st.info(f"📊 **Quota :** {error_info['used']} / {error_info['limit']} tokens utilisés aujourd'hui")
+                                
+                                st.markdown("""
+                                ---
+                                **Que faire ?**
+                                - ⏳ Attendez quelques minutes et réessayez
+                                - 🔄 Le quota se réinitialise à minuit (UTC)
+                                - 💡 Pour une limite plus élevée, contactez l'administrateur du système
+                                """)
+                                
+                                # Stop evaluation process
+                                break
+                            else:
+                                # Other errors
+                                st.error(f"❌ Erreur lors de l'évaluation du candidat {candidate['candidate_id']}: {str(e)[:200]}")
                             continue
                     
                     st.session_state.evaluation_results = results
@@ -957,7 +1013,50 @@ def show_evaluation_page():
                         # Show results immediately
                         show_evaluation_results(results)
                     else:
-                        st.warning("⚠️ Aucune évaluation n'a pu être complétée")
+                        # Check if we stopped due to rate limit
+                        rate_limit_detected = any(
+                            'error' in r and parse_rate_limit_error(r.get('error', '')).get('is_rate_limit', False)
+                            for r in results
+                        )
+                        if not rate_limit_detected:
+                            st.warning("⚠️ Aucune évaluation n'a pu être complétée")
+
+
+def parse_rate_limit_error(error_msg):
+    """Parse rate limit error and extract useful information for users."""
+    error_str = str(error_msg)
+    
+    # Check if it's a rate limit error (429 or rate_limit_exceeded)
+    is_rate_limit = (
+        '429' in error_str or 
+        'rate limit' in error_str.lower() or 
+        'Rate limit' in error_str or
+        'rate_limit_exceeded' in error_str.lower()
+    )
+    
+    if is_rate_limit:
+        # Try to extract wait time (format: "20m12.192s" or "20m 12s" etc.)
+        wait_time_match = re.search(r'Please try again in ([\dhm\s.]+s?)', error_str, re.IGNORECASE)
+        if not wait_time_match:
+            # Try alternative format
+            wait_time_match = re.search(r'try again in ([\dhm\s.]+s?)', error_str, re.IGNORECASE)
+        wait_time = wait_time_match.group(1).strip() if wait_time_match else None
+        
+        # Try to extract limit info
+        limit_match = re.search(r'Limit (\d+)', error_str)
+        used_match = re.search(r'Used (\d+)', error_str)
+        
+        limit = limit_match.group(1) if limit_match else None
+        used = used_match.group(1) if used_match else None
+        
+        return {
+            'is_rate_limit': True,
+            'wait_time': wait_time,
+            'limit': limit,
+            'used': used
+        }
+    
+    return {'is_rate_limit': False}
 
 
 def parse_final_decision(final_decision_str):
@@ -1063,12 +1162,21 @@ def show_evaluation_results(results):
         
         # Check if there's an error
         if 'error' in result:
-            results_df.append({
-                'Candidat': candidate_id,
-                'Score Final': 'Erreur',
-                'Rang': 'N/A',
-                'Statut': 'Erreur d\'évaluation'
-            })
+            error_info = parse_rate_limit_error(result.get('error', ''))
+            if error_info.get('is_rate_limit'):
+                results_df.append({
+                    'Candidat': candidate_id,
+                    'Score Final': 'Quota dépassé',
+                    'Rang': 'N/A',
+                    'Statut': '⏰ Quota API atteint'
+                })
+            else:
+                results_df.append({
+                    'Candidat': candidate_id,
+                    'Score Final': 'Erreur',
+                    'Rang': 'N/A',
+                    'Statut': 'Erreur d\'évaluation'
+                })
             continue
         
         # Parse the decision
@@ -1207,7 +1315,33 @@ def show_evaluation_results(results):
             
             # Check for errors first
             if 'error' in result:
-                st.error(f"❌ Erreur lors de l'évaluation: {result.get('error', 'Erreur inconnue')}")
+                error_msg = result.get('error', 'Erreur inconnue')
+                error_info = parse_rate_limit_error(error_msg)
+                
+                if error_info.get('is_rate_limit'):
+                    st.error("""
+                    ## ⏰ Quota API Dépassé
+                    
+                    **Le quota quotidien de l'API a été atteint pour ce candidat.**
+                    
+                    Veuillez patienter avant de relancer une évaluation. Le quota se réinitialise automatiquement.
+                    """)
+                    
+                    if error_info.get('wait_time'):
+                        st.info(f"⏱️ **Temps d'attente estimé :** {error_info['wait_time']}")
+                    
+                    if error_info.get('limit') and error_info.get('used'):
+                        st.info(f"📊 **Quota :** {error_info['used']} / {error_info['limit']} tokens utilisés aujourd'hui")
+                    
+                    st.markdown("""
+                    ---
+                    **Que faire ?**
+                    - ⏳ Attendez quelques minutes et réessayez
+                    - 🔄 Le quota se réinitialise à minuit (UTC)
+                    - 💡 Pour une limite plus élevée, contactez l'administrateur du système
+                    """)
+                else:
+                    st.error(f"❌ Erreur lors de l'évaluation: {str(error_msg)[:200]}")
                 return
             
             decision_data = parse_final_decision(final_decision)
