@@ -194,16 +194,28 @@ class CandidateSelectionSystem:
             
             Générez:
             1. Un score final agrégé (0-100)
-            2. Un classement relatif
-            3. Les points forts du candidat
-            4. Les points faibles ou à améliorer
-            5. Une justification détaillée et explicable du score
+            2. Un classement relatif (nombre entier)
+            3. Les points forts du candidat (liste de strings)
+            4. Les points faibles ou à améliorer (liste de strings)
+            5. Une justification détaillée et explicable du score (string)
             6. Une recommandation (Recommandé / À considérer / Non recommandé)
             
-            Format de réponse: JSON avec les clés: final_score, ranking, strengths, weaknesses, detailed_justification, recommendation
+            IMPORTANT: Vous DEVEZ répondre UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
+            Le JSON doit être au format suivant (sans markdown, sans code blocks, juste le JSON brut):
+            
+            {{
+                "final_score": <nombre entre 0 et 100>,
+                "ranking": <nombre entier>,
+                "strengths": ["point fort 1", "point fort 2", ...],
+                "weaknesses": ["point faible 1", "point faible 2", ...],
+                "detailed_justification": "<texte de justification>",
+                "recommendation": "Recommandé" ou "À considérer" ou "Non recommandé"
+            }}
+            
+            Répondez SEULEMENT avec le JSON, rien d'autre.
             """,
             agent=self.decider_agent,
-            expected_output="Un dictionnaire JSON avec la décision finale et la justification"
+            expected_output="Un objet JSON valide (sans markdown ni code blocks) avec les clés: final_score (0-100), ranking (entier), strengths (liste), weaknesses (liste), detailed_justification (string), recommendation (string)"
         )
         return task
     
@@ -251,6 +263,20 @@ class CandidateSelectionSystem:
             decision_crew = Crew(agents=[self.decider_agent], tasks=[decision_task], verbose=False)
             final_decision = decision_crew.kickoff()
             
+            # Extract the actual text content from CrewAI response
+            # CrewAI can return different formats, so we try multiple approaches
+            final_decision_str = None
+            if hasattr(final_decision, 'raw'):
+                final_decision_str = str(final_decision.raw)
+            elif hasattr(final_decision, 'content'):
+                final_decision_str = str(final_decision.content)
+            elif hasattr(final_decision, 'output'):
+                final_decision_str = str(final_decision.output)
+            elif isinstance(final_decision, dict):
+                final_decision_str = final_decision.get('output', str(final_decision))
+            else:
+                final_decision_str = str(final_decision)
+            
             print(f"  ✅ Evaluation complete for candidate {candidate_data.get('candidate_id', 'Unknown')}")
             
             return {
@@ -259,7 +285,7 @@ class CandidateSelectionSystem:
                 'profile_evaluation': str(profile_task.output) if hasattr(profile_task, 'output') else str(evaluations),
                 'technical_evaluation': str(technical_task.output) if hasattr(technical_task, 'output') else str(evaluations),
                 'soft_skills_evaluation': str(soft_skills_task.output) if hasattr(soft_skills_task, 'output') else str(evaluations),
-                'final_decision': str(final_decision)
+                'final_decision': final_decision_str
             }
         except Exception as e:
             print(f"  ❌ Error evaluating candidate: {e}")

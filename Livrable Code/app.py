@@ -965,21 +965,83 @@ def parse_final_decision(final_decision_str):
     if not final_decision_str or final_decision_str == 'N/A':
         return None
     
+    # Convert to string if it's not already
+    if not isinstance(final_decision_str, str):
+        final_decision_str = str(final_decision_str)
+    
+    # Remove HTML tags
+    final_decision_str = re.sub(r'<[^>]+>', '', final_decision_str)
+    
+    # Remove markdown code blocks if present
+    final_decision_str = re.sub(r'```json\s*', '', final_decision_str)
+    final_decision_str = re.sub(r'```\s*', '', final_decision_str)
+    
+    # Try multiple strategies to extract JSON
+    json_candidates = []
+    
+    # Strategy 1: Try to parse the entire string as JSON
     try:
-        # Try to parse as JSON
-        if isinstance(final_decision_str, str):
-            # Extract JSON if it's embedded in text
-            json_match = re.search(r'\{.*\}', final_decision_str, re.DOTALL)
-            if json_match:
-                final_decision_str = json_match.group(0)
-            decision_data = json.loads(final_decision_str)
-        else:
-            decision_data = final_decision_str
+        return json.loads(final_decision_str.strip())
+    except (json.JSONDecodeError, ValueError):
+        pass
+    
+    # Strategy 2: Find JSON object using balanced braces
+    brace_count = 0
+    start_idx = -1
+    for i, char in enumerate(final_decision_str):
+        if char == '{':
+            if brace_count == 0:
+                start_idx = i
+            brace_count += 1
+        elif char == '}':
+            brace_count -= 1
+            if brace_count == 0 and start_idx != -1:
+                json_candidates.append(final_decision_str[start_idx:i+1])
+                start_idx = -1
+    
+    # Strategy 3: Use regex as fallback (less reliable but catches edge cases)
+    if not json_candidates:
+        json_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', final_decision_str, re.DOTALL)
+        if json_match:
+            json_candidates.append(json_match.group(0))
+    
+    # Try to parse each candidate
+    for json_str in json_candidates:
+        try:
+            # Clean up common issues
+            json_str = json_str.strip()
+            # Remove trailing commas before closing braces/brackets
+            json_str = re.sub(r',\s*}', '}', json_str)
+            json_str = re.sub(r',\s*]', ']', json_str)
+            
+            decision_data = json.loads(json_str)
+            if isinstance(decision_data, dict) and len(decision_data) > 0:
+                return decision_data
+        except (json.JSONDecodeError, ValueError):
+            continue
+    
+    # If all strategies fail, try to extract key-value pairs manually
+    try:
+        # Extract final_score
+        score_match = re.search(r'"final_score"\s*:\s*(\d+(?:\.\d+)?)', final_decision_str)
+        ranking_match = re.search(r'"ranking"\s*:\s*(\d+)', final_decision_str)
+        recommendation_match = re.search(r'"recommendation"\s*:\s*"([^"]+)"', final_decision_str)
         
-        return decision_data
-    except (json.JSONDecodeError, ValueError, TypeError):
-        # If it's not JSON, return the string as is
-        return {'text': str(final_decision_str)}
+        if score_match or ranking_match or recommendation_match:
+            result = {}
+            if score_match:
+                result['final_score'] = float(score_match.group(1))
+            if ranking_match:
+                result['ranking'] = int(ranking_match.group(1))
+            if recommendation_match:
+                result['recommendation'] = recommendation_match.group(1)
+            if result:
+                return result
+    except Exception:
+        pass
+    
+    # Last resort: return None to trigger fallback
+    return None
 
 
 def show_evaluation_results(results):
@@ -999,14 +1061,24 @@ def show_evaluation_results(results):
         candidate_id = result.get('candidate_id', 'Unknown')
         final_decision = result.get('final_decision', result.get('error', 'N/A'))
         
+        # Check if there's an error
+        if 'error' in result:
+            results_df.append({
+                'Candidat': candidate_id,
+                'Score Final': 'Erreur',
+                'Rang': 'N/A',
+                'Statut': 'Erreur d\'évaluation'
+            })
+            continue
+        
         # Parse the decision
         decision_data = parse_final_decision(final_decision)
         
         # Extract readable information
         if decision_data and isinstance(decision_data, dict):
-            score = decision_data.get('final_score', decision_data.get('score', 'N/A'))
-            ranking = decision_data.get('ranking', decision_data.get('rank', 'N/A'))
-            status = decision_data.get('status', decision_data.get('recommendation', 'N/A'))
+            score = decision_data.get('final_score', decision_data.get('score', None))
+            ranking = decision_data.get('ranking', decision_data.get('rank', None))
+            status = decision_data.get('recommendation', decision_data.get('status', None))
             
             # Format the status nicely
             if isinstance(status, list) and len(status) > 0:
@@ -1017,22 +1089,38 @@ def show_evaluation_results(results):
             # Format ranking
             if isinstance(ranking, (int, float)):
                 ranking = f"Rang {int(ranking)}"
-            elif isinstance(ranking, str):
+            elif isinstance(ranking, str) and ranking.lower() != 'n/a':
                 ranking = ranking.title()
+            else:
+                ranking = 'N/A'
+            
+            # Format score
+            if isinstance(score, (int, float)):
+                score_str = f"{int(score)}/100"
+            elif score is not None:
+                score_str = str(score)
+            else:
+                score_str = 'N/A'
             
             results_df.append({
                 'Candidat': candidate_id,
-                'Score Final': f"{score}/100" if isinstance(score, (int, float)) else str(score),
+                'Score Final': score_str,
                 'Rang': ranking,
-                'Statut': status
+                'Statut': status if status else 'N/A'
             })
         else:
-            # Fallback if parsing fails
+            # Fallback if parsing fails - try to show raw data for debugging
+            # Log the issue for debugging (only in development)
+            import sys
+            if hasattr(sys, '_getframe'):
+                print(f"⚠️ Warning: Could not parse final_decision for candidate {candidate_id}")
+                print(f"   Raw decision (first 200 chars): {str(final_decision)[:200]}")
+            
             results_df.append({
                 'Candidat': candidate_id,
                 'Score Final': 'N/A',
                 'Rang': 'N/A',
-                'Statut': 'Non disponible'
+                'Statut': 'Format invalide'
             })
     
     # Display summary table
@@ -1116,6 +1204,12 @@ def show_evaluation_results(results):
             """, unsafe_allow_html=True)
             
             final_decision = result.get('final_decision', result.get('error', 'N/A'))
+            
+            # Check for errors first
+            if 'error' in result:
+                st.error(f"❌ Erreur lors de l'évaluation: {result.get('error', 'Erreur inconnue')}")
+                return
+            
             decision_data = parse_final_decision(final_decision)
             
             if decision_data and isinstance(decision_data, dict):
@@ -1227,14 +1321,25 @@ def show_evaluation_results(results):
                     """.format(conclusion=conclusion), unsafe_allow_html=True)
             else:
                 # Fallback: display as text if parsing fails
+                st.warning("⚠️ Impossible de parser la décision finale au format JSON. Affichage du contenu brut:")
+                
+                # Clean HTML tags before displaying
+                clean_decision = re.sub(r'<[^>]+>', '', str(final_decision))
+                # Remove excessive whitespace
+                clean_decision = re.sub(r'\s+', ' ', clean_decision).strip()
+                
                 st.markdown(f"""
                     <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; 
-                               margin-top: 0.5rem; border-left: 3px solid #667eea;">
-                        <p style="color: #4b5563; line-height: 1.8; margin: 0;">
-                            {str(final_decision)}
+                               margin-top: 0.5rem; border-left: 3px solid #f59e0b;">
+                        <p style="color: #4b5563; line-height: 1.8; margin: 0; font-family: monospace; font-size: 0.9rem;">
+                            {clean_decision[:1000]}{'...' if len(clean_decision) > 1000 else ''}
                         </p>
                     </div>
                 """, unsafe_allow_html=True)
+                
+                # Show raw data in expander for debugging
+                with st.expander("🔍 Voir les données brutes (debug)"):
+                    st.code(str(final_decision)[:2000], language='text')
 
 
 def show_results_page():
